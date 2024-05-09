@@ -87,7 +87,9 @@ try {
 
     $mail->send();
     // echo 'Message has been sent';
-    header('Location: confirmation/index.php');
+    header('Location: confirmation/index.html');
+    // header("Location: https://finanscokrediet.com/confirmation/index.html");
+
 } catch (Exception $e) {
-    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
