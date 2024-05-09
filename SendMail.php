@@ -82,12 +82,9 @@ try {
     $mail->Body .= "Telephone : $tel\n<br>";
     $mail->Body .= "Email : $email\n<br>";
     $mail->Body .= "Merci.";
-
     $mail->AltBody = 'Une nouvelle demande de crédit a été soumise depuis votre site :\n\n';
-
     $mail->send();
-    // echo 'Message has been sent';
-    header('Location: confirmation/index.html');
+    header('Location:confirmation/index.html');
     // header("Location: https://finanscokrediet.com/confirmation/index.html");
 
 } catch (Exception $e) {
