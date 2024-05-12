@@ -1,7 +1,64 @@
 <?php
+// Inclure le fichier d'autoloader de PHPMailer
+require 'vendor/autoload.php';
 
-// error_reporting(E_ALL & ~E_DEPRECATED);
-// ini_set("display_errors", 1);
+// Vérifier si le formulaire a été soumis
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // Définir un tableau de messages d'erreur
+//     $errors = [];
+
+//     // Fonction pour nettoyer les données du formulaire
+//     function test_input($data) {
+//         $data = trim($data);
+//         $data = stripslashes($data);
+//         $data = htmlspecialchars($data);
+//         return $data;
+//     }
+
+//     // Vérifier chaque champ du formulaire
+//     $champs = array(
+//         "projet" => "Le champ 'projet'",
+//         "montant" => "Le champ 'montant'",
+//         "duree" => "Le champ 'duree'",
+//         "emprunt" => "Le champ 'emprunt'",
+//         "pays" => "Le champ 'pays'",
+//         "adress" => "Le champ 'adresse'",
+//         "postal" => "Le champ 'postal'",
+//         "ville" => "Le champ 'ville'",
+//         "situation_logement" => "Le champ 'situation_logement'",
+//         "situation_professionnelle" => "Le champ 'situation_professionnelle'",
+//         "revenus" => "Le champ 'revenus'",
+//         "situation_famillial" => "Le champ 'situation_famillial'",
+//         "etat_civil" => "Le champ 'etat_civil'",
+//         "nom" => "Le champ 'nom'",
+//         "prenom" => "Le champ 'prenom'",
+//         "date" => "Le champ 'date'",
+//         "nation" => "Le champ 'nation'",
+//         "tel" => "Le champ 'tel'",
+//         "email" => "Le champ 'email'"
+//     );
+
+//     foreach ($champs as $key => $value) {
+//         if (empty($_POST[$key])) {
+//             $errors[] = "$value est requis.";
+//         } else {
+//             ${$key} = test_input($_POST[$key]);
+//             // Vous pouvez effectuer d'autres validations spécifiques ici si nécessaire
+//         }
+//     }
+
+//     // Vérifier s'il y a des erreurs
+//     if (!empty($errors)) {
+//         // S'il y a des erreurs, rediriger vers la page précédente avec les erreurs
+//         $_SESSION['errors'] = $errors; // Stocker les erreurs dans une session
+//         header("Location: " . $_SERVER["HTTP_REFERER"]); // Rediriger vers la page précédente
+//         exit(); // Arrêter l'exécution du script
+//     } else {
+//         // Si tout est valide, vous pouvez traiter les données du formulaire ici
+//         // Par exemple, enregistrer les données dans une base de données ou envoyer un e-mail
+//         // Assurez-vous de nettoyer et valider les données avant de les utiliser pour éviter les attaques XSS et d'injection SQL
+//     }
+// }
 
 $projet = $_POST['projet'];
 $montant = $_POST['montant'];
@@ -23,70 +80,52 @@ $nation = $_POST['nation'];
 $tel = $_POST['tel'];
 $email = $_POST['email'];
 
-//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+// Créer une nouvelle instance de PHPMailer
+$mail = new PHPMailer\PHPMailer\PHPMailer();
 
-//Load Composer's autoloader
-require 'vendor/autoload.php';
+// Configurer les paramètres du serveur SMTP
+$mail->isSMTP();
+$mail->Host = 'mail.credito-mas-simple.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'support@credito-mas-simple.com';
+$mail->Password = 'Happylouis66'; // Remplacez par votre mot de passe
+$mail->SMTPSecure = 'ssl';
+$mail->Port = 465;
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
+// Configurer l'expéditeur et le destinataire
+$mail->setFrom($_POST['email']);
+$mail->addAddress('azanmassouhappylouis@gmail.com');
+// $mail->addAddress('Contacten@finanscokrediet.com');
 
-try {
-    //Server settings
-    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'azanmassouhappylouis@gmail.com';                     //SMTP username
-    $mail->Password   = 'grge pler zqoi jpyr';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+// Configurer le contenu de l'e-mail
+$mail->isHTML(true);
+$mail->Subject = 'Finansco : Er is een nieuwe kredietaanvraag ingediend vanaf uw site ';
+// $mail->Body = "Bonjour,\n\n";
+// $mail->Body .= "Une nouvelle demande de credit a ete soumise depuis votre site :<br>";
+$mail->Body .= "Project : $projet\n<br>";
+$mail->Body .= "Bedrag : $montant\n<br>";
+$mail->Body .= "Looptijd van de lening : $duree\n<br>";
+$mail->Body .= "met schulden : $emprunt\n<br>";
+$mail->Body .= "Land van verblijf: $pays\n<br>";
+$mail->Body .= "Adres : $adress\n<br>";
+$mail->Body .= "Postcode : $postal\<br>";
+$mail->Body .= "Stad : $ville\n<br>";
+$mail->Body .= "Huisvestingssituatie : $situation_logement\n<br>";
+$mail->Body .= "Professionele situatie : $situation_professionnelle\n<br>";
+$mail->Body .= "Gezinssituatie : $situation_famillial\n<br>";
+$mail->Body .= "Burgerlijke staat : $etat_civil\n<br>";
+$mail->Body .= "Naam : $nom\n<br>";
+$mail->Body .= "Datum : $date\n<br>";
+$mail->Body .= "Geboorteland : $nation\n<br>";
+$mail->Body .= "Telefoon : $tel\n<br>";
+$mail->Body .= "E-mail : $email\n<br>";
+$mail->Body .= "Bedankt voor uw tijd.";
+// $mail->AltBody = 'Une nouvelle demande de crédit a été soumise depuis votre site :\n\n';
 
-    //Recipients
-    $mail->setFrom($email, $email);
-    // $mail->addAddress('Contacten@finanscokrediet.com', 'finanscokrediet');     //Add a recipient
-    // $mail->addAddress('azanmassouhappylouis@gmail.com');               //Name is optional
-    // $mail->addReplyTo('azanmassouhappylouis@gmail.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-    //Attachments
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Finansco : Soumission du formulaire de Pret';
-
-    $mail->Body = "Bonjour,\n\n";
-    $mail->Body .= "Une nouvelle demande de credit a ete soumise depuis votre site :<br>";
-    $mail->Body .= "Projet : $projet\n<br>";
-    $mail->Body .= "Montant : $montant\n<br>";
-    $mail->Body .= "Durer : $duree\n<br>";
-    $mail->Body .= "Emprunt : $emprunt\n<br>";
-    $mail->Body .= "Pays de residence: $pays\n<br>";
-    $mail->Body .= "Adress : $adress\n<br>";
-    $mail->Body .= "Postal : $postal\<br>";
-    $mail->Body .= "Ville : $ville\n<br>";
-    $mail->Body .= "Situation Logement : $situation_logement\n<br>";
-    $mail->Body .= "Situation Professionnelle : $situation_professionnelle\n<br>";
-    $mail->Body .= "Situation Familliale : $situation_famillial\n<br>";
-    $mail->Body .= "Etat Civil : $etat_civil\n<br>";
-    $mail->Body .= "Nom : $nom\n<br>";
-    $mail->Body .= "Date : $date\n<br>";
-    $mail->Body .= "Pays de naissance : $nation\n<br>";
-    $mail->Body .= "Telephone : $tel\n<br>";
-    $mail->Body .= "Email : $email\n<br>";
-    $mail->Body .= "Merci.";
-    $mail->AltBody = 'Une nouvelle demande de crédit a été soumise depuis votre site :\n\n';
-    $mail->send();
-    header('Location:confirmation/index.html');
-    // header("Location: https://finanscokrediet.com/confirmation/index.html");
-
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+// Envoyer l'e-mail
+if(!$mail->send()) {
+    echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
+} else {
+    header("Location: confirmation/index.html");
+    // echo '0!';
 }
