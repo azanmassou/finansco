@@ -48,7 +48,7 @@ try {
 
     //Recipients
     $mail->setFrom($email, $email);
-    $mail->addAddress('Contacten@finanscokrediet.com', 'finanscokrediet');     //Add a recipient
+    // $mail->addAddress('Contacten@finanscokrediet.com', 'finanscokrediet');     //Add a recipient
     // $mail->addAddress('azanmassouhappylouis@gmail.com');               //Name is optional
     // $mail->addReplyTo('azanmassouhappylouis@gmail.com', 'Information');
     // $mail->addCC('cc@example.com');
