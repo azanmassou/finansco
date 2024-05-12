@@ -3,26 +3,6 @@
 // error_reporting(E_ALL & ~E_DEPRECATED);
 // ini_set("display_errors", 1);
 
-$projet = $_POST['projet'];
-$montant = $_POST['montant'];
-$duree = $_POST['duree'];
-$emprunt = $_POST['emprunt'];
-$pays = $_POST['pays'];
-$adress = $_POST['adress'];
-$postal = $_POST['postal'];
-$ville = $_POST['ville'];
-$situation_logement = $_POST['situation_logement'];
-$situation_professionnelle = $_POST['situation_professionnelle'];
-$revenus = $_POST['revenus'];
-$situation_famillial = $_POST['situation_famillial'];
-$etat_civil = $_POST['etat_civil'];
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$date = $_POST['date'];
-$nation = $_POST['nation'];
-$tel = $_POST['tel'];
-$email = $_POST['email'];
-
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
