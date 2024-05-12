@@ -99,9 +99,9 @@ $mail->addAddress('azanmassouhappylouis@gmail.com');
 
 // Configurer le contenu de l'e-mail
 $mail->isHTML(true);
-$mail->Subject = 'Finansco : Er is een nieuwe kredietaanvraag ingediend vanaf uw site ';
-// $mail->Body = "Bonjour,\n\n";
-// $mail->Body .= "Une nouvelle demande de credit a ete soumise depuis votre site :<br>";
+$mail->Subject = 'Finansco Krediet';
+$mail->Body = "Hallo,\n\n";
+$mail->Body .= "Er is een nieuwe kredietaanvraag ingediend vanaf uw site :<br>";
 $mail->Body .= "Project : $projet\n<br>";
 $mail->Body .= "Bedrag : $montant\n<br>";
 $mail->Body .= "Looptijd van de lening : $duree\n<br>";
@@ -120,7 +120,7 @@ $mail->Body .= "Geboorteland : $nation\n<br>";
 $mail->Body .= "Telefoon : $tel\n<br>";
 $mail->Body .= "E-mail : $email\n<br>";
 $mail->Body .= "Bedankt voor uw tijd.";
-// $mail->AltBody = 'Une nouvelle demande de crédit a été soumise depuis votre site :\n\n';
+$mail->AltBody = 'Er is een nieuwe kredietaanvraag ingediend vanaf uw site :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {

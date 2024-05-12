@@ -29,10 +29,10 @@ $mail->addAddress('azanmassouhappylouis@gmail.com');
 
 // Configurer le contenu de l'e-mail
 $mail->isHTML(true);
-$mail->Subject = 'Finansco : Er is een nieuw contactverzoek ingediend vanaf uw site';
+$mail->Subject = 'FINANSKO KREDIET';
 
-// $mail->Body = "Bonjour,\n\n";
-// $mail->Body .= "Une nouvelle demande de Contact a ete soumise depuis votre site :<br>";
+$mail->Body = "Hallo,\n\n";
+$mail->Body .= " Er is een nieuw contactverzoek ingediend vanaf uw site :<br>";
 $mail->Body .= "Voornaam : $prenom\n<br>";
 $mail->Body .= "Naam : $nom\n<br>";
 $mail->Body .= "E-mail : $email\n<br>";
@@ -40,7 +40,7 @@ $mail->Body .= "Telefoon : $tel\n<br>";
 $mail->Body .= "Object : $objet\n<br>";
 $mail->Body .= "Bericht : $message\n<br>";
 
-// $mail->AltBody = 'Er is een nieuw contactverzoek ingediend vanaf uw site :\n\n';
+$mail->AltBody = 'Er is een nieuw contactverzoek ingediend vanaf uw site :\n\n';
 
 // Envoyer l'e-mail
 if(!$mail->send()) {
