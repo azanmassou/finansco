@@ -2854,26 +2854,22 @@
 
                             <!-- Étape 2 -->
                             <div id="step2" style="display: none">
-                              <div class="form-group">
-                                <label for="pays">Land van verblijf </label>
-                                <input
-                                  type="text"
-                                  id="pays"
-                                  name="pays"
-                                  required
-                                />
+                             
+                              <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-paysderesidence elementor-col-100 elementor-field-required">
+                                <label for="form-field-paysderesidence" class="elementor-field-label">
+                                  Land van verblijf						</label>
+                                    <input size="1" type="text" name="pays" id="form-field-paysderesidence" class="elementor-field elementor-size-sm  elementor-field-textual" required="required" aria-required="true">
                               </div>
-                              <div class="form-group">
-                                <label for="adress">Postadres </label>
-                                <input
-                                  type="text"
-                                  id="adress"
-                                  name="adress"
-                                  required
-                                />
+
+                              
+                              <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-adressepostale elementor-col-100 elementor-field-required">
+                                <label for="form-field-adressepostale" class="elementor-field-label">
+                                  Postadres						</label>
+                                    <input size="1" type="text" name="adress" id="form-field-adressepostale" class="elementor-field elementor-size-sm  elementor-field-textual" required="required" aria-required="true">
                               </div>
+                              
                               <div class="form-group">
-                                <label for="postal">Postcode </label>
+                                <label for="postal"> </label>
                                 <input
                                   type="text"
                                   id="postal"
@@ -2881,8 +2877,13 @@
                                   required
                                 />
                               </div>
+                              <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-codepostal elementor-col-100 elementor-field-required">
+                                <label for="form-field-codepostal" class="elementor-field-label">
+                                  Postcode						</label>
+                                    <input size="1" type="text" name="postal" id="form-field-codepostal" class="elementor-field elementor-size-sm  elementor-field-textual" required="required" aria-required="true">
+                              </div>
                               <div class="form-group">
-                                <label for="ville">Stad</label>
+                                <label for="ville"></label>
                                 <input
                                   type="text"
                                   id="ville"
@@ -2890,25 +2891,13 @@
                                   required
                                 />
                               </div>
-                              <div class="form-group">
-                                <label for="situation_logement"
-                                  >Huisvestingssituatie
-                                </label>
-                                <select
-                                  name="situation_logement"
-                                  id="situation_logement"
-                                  class="form-control"
-                                  required
-                                >
-                                  <option value=""></option>
-                                  <option value="Huurder">Huurder</option>
-                                  <option value="Eigenaar">Eigenaar</option>
-                                  <option value="Accommodatie ter plaatse">
-                                    Accommodatie ter plaatse
-                                  </option>
-                                  <option value="Heberge">Heberge</option>
-                                </select>
+
+                              <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-ville elementor-col-100 elementor-field-required">
+                                <label for="form-field-ville" class="elementor-field-label">
+                                  Stad							</label>
+                                    <input size="1" type="text" name="ville" id="form-field-ville" class="elementor-field elementor-size-sm  elementor-field-textual" required="required" aria-required="true">
                               </div>
+                            
                               <div
                                 class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-professionnelle elementor-col-100 elementor-field-required"
                               >
@@ -2916,7 +2905,7 @@
                                   for="form-field-professionnelle"
                                   class="elementor-field-label"
                                 >
-                                  Situation professionnelle
+                                Huisvestingssituatie
                                 </label>
                                 <div
                                   class="elementor-field elementor-select-wrapper remove-before"
@@ -2928,26 +2917,48 @@
                                     ></i>
                                   </div>
                                   <select
-                                    name=""
+                                    name="situation_logement"
                                     id="form-field-professionnelle"
                                     class="elementor-field-textual elementor-size-sm"
                                     required="required"
                                     aria-required="true"
                                   >
-                                    
+                                  <option value=""></option>
+                                  <option value="Huurder">Huurder</option>
+                                  <option value="Eigenaar">Eigenaar</option>
+                                  <option value="Accommodatie ter plaatse">
+                                    Accommodatie ter plaatse
+                                  </option>
+                                  <option value="Heberge">Heberge</option>
                                   </select>
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label for="situation_professionnelle"
-                                  >Professionele situatie
-                                </label>
-                                <select
-                                  name="situation_professionnelle"
-                                  id="situation_professionnelle"
-                                  class="form-control"
-                                  required
+                             
+                              <div
+                                class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-professionnelle elementor-col-100 elementor-field-required"
+                              >
+                                <label
+                                  for="form-field-professionnelle"
+                                  class="elementor-field-label"
                                 >
+                                Professionele situatie
+                                </label>
+                                <div
+                                  class="elementor-field elementor-select-wrapper remove-before"
+                                >
+                                  <div class="select-caret-down-wrapper">
+                                    <i
+                                      aria-hidden="true"
+                                      class="eicon-caret-down"
+                                    ></i>
+                                  </div>
+                                  <select
+                                    name="situation_professionnelle"
+                                    id="form-field-professionnelle"
+                                    class="elementor-field-textual elementor-size-sm"
+                                    required="required"
+                                    aria-required="true"
+                                  >
                                   <option value=""></option>
                                   <option value="Werknemer in de privésector">
                                     Werknemer in de privésector
@@ -2962,8 +2973,16 @@
                                   </option>
                                   <option value="Pensioenen">Pensioenen</option>
                                   <option value="Andere">Andere</option>
-                                </select>
+                                  </select>
+                                </div>
                               </div>
+                            
+                              <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-revenus elementor-col-100 elementor-field-required">
+                                <label for="form-field-revenus" class="elementor-field-label">
+                                  Netto maandelijks inkomen						</label>
+                                    <input size="1" type="text" name="revenus" id="form-field-revenus" class="elementor-field elementor-size-sm  elementor-field-textual" required="required" aria-required="true">
+                              </div>
+                              
                               <div
                                 class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-professionnelle elementor-col-100 elementor-field-required"
                               >
@@ -2971,7 +2990,7 @@
                                   for="form-field-professionnelle"
                                   class="elementor-field-label"
                                 >
-                                  Situation professionnelle
+                                Gezinssituatie
                                 </label>
                                 <div
                                   class="elementor-field elementor-select-wrapper remove-before"
@@ -2983,37 +3002,12 @@
                                     ></i>
                                   </div>
                                   <select
-                                    name=""
+                                    name="situation_famillial"
                                     id="form-field-professionnelle"
                                     class="elementor-field-textual elementor-size-sm"
                                     required="required"
                                     aria-required="true"
                                   >
-                                    
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label for="revenus"
-                                  >Netto maandelijks inkomen
-                                </label>
-                                <input
-                                  type="text"
-                                  id="revenus"
-                                  name="revenus"
-                                  required
-                                />
-                              </div>
-                              <div class="form-group">
-                                <label for="situation_famillial"
-                                  >Gezinssituatie
-                                </label>
-                                <select
-                                  name="situation_famillial"
-                                  id="situation_famillial"
-                                  class="form-control"
-                                  required
-                                >
                                   <option value=""></option>
                                   <option value="Enkel">Enkel</option>
                                   <option value="Gescheiden">Gescheiden</option>
@@ -3021,34 +3015,6 @@
                                   <option value="Gescheiden">Gescheiden</option>
                                   <option value="Weduwe">Weduwe</option>
                                   <option value="Pasce">Pasce</option>
-                                </select>
-                              </div>
-                              <div
-                                class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-professionnelle elementor-col-100 elementor-field-required"
-                              >
-                                <label
-                                  for="form-field-professionnelle"
-                                  class="elementor-field-label"
-                                >
-                                  Situation professionnelle
-                                </label>
-                                <div
-                                  class="elementor-field elementor-select-wrapper remove-before"
-                                >
-                                  <div class="select-caret-down-wrapper">
-                                    <i
-                                      aria-hidden="true"
-                                      class="eicon-caret-down"
-                                    ></i>
-                                  </div>
-                                  <select
-                                    name=""
-                                    id="form-field-professionnelle"
-                                    class="elementor-field-textual elementor-size-sm"
-                                    required="required"
-                                    aria-required="true"
-                                  >
-                                    
                                   </select>
                                 </div>
                               </div>
