@@ -7,8 +7,15 @@ $nom = $_POST['nom'];
 $objet = $_POST['objet'];
 $tel = $_POST['tel'];
 $message = $_POST['message'];
-$email = $_POST['email'];
+// $email = $_POST['email'];
 
+if (!isset($_POST['email']) || empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+    header("Location: {$_SERVER['HTTP_REFERER']}?error=email&email={$_POST['email']}");
+    exit;
+}
+
+
+$email = $_POST['email'];
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -23,7 +30,7 @@ $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
 // Configurer l'expéditeur et le destinataire
-$mail->setFrom($_POST['email']);
+$mail->setFrom($email);
 // $mail->addAddress('azanmassouhappylouis@gmail.com');
 $mail->addAddress('Contacten@finanscokrediet.com'); 
 

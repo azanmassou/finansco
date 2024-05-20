@@ -2,64 +2,6 @@
 // Inclure le fichier d'autoloader de PHPMailer
 require 'vendor/autoload.php';
 
-// Vérifier si le formulaire a été soumis
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Définir un tableau de messages d'erreur
-//     $errors = [];
-
-//     // Fonction pour nettoyer les données du formulaire
-//     function test_input($data) {
-//         $data = trim($data);
-//         $data = stripslashes($data);
-//         $data = htmlspecialchars($data);
-//         return $data;
-//     }
-
-//     // Vérifier chaque champ du formulaire
-//     $champs = array(
-//         "projet" => "Le champ 'projet'",
-//         "montant" => "Le champ 'montant'",
-//         "duree" => "Le champ 'duree'",
-//         "emprunt" => "Le champ 'emprunt'",
-//         "pays" => "Le champ 'pays'",
-//         "adress" => "Le champ 'adresse'",
-//         "postal" => "Le champ 'postal'",
-//         "ville" => "Le champ 'ville'",
-//         "situation_logement" => "Le champ 'situation_logement'",
-//         "situation_professionnelle" => "Le champ 'situation_professionnelle'",
-//         "revenus" => "Le champ 'revenus'",
-//         "situation_famillial" => "Le champ 'situation_famillial'",
-//         "etat_civil" => "Le champ 'etat_civil'",
-//         "nom" => "Le champ 'nom'",
-//         "prenom" => "Le champ 'prenom'",
-//         "date" => "Le champ 'date'",
-//         "nation" => "Le champ 'nation'",
-//         "tel" => "Le champ 'tel'",
-//         "email" => "Le champ 'email'"
-//     );
-
-//     foreach ($champs as $key => $value) {
-//         if (empty($_POST[$key])) {
-//             $errors[] = "$value est requis.";
-//         } else {
-//             ${$key} = test_input($_POST[$key]);
-//             // Vous pouvez effectuer d'autres validations spécifiques ici si nécessaire
-//         }
-//     }
-
-//     // Vérifier s'il y a des erreurs
-//     if (!empty($errors)) {
-//         // S'il y a des erreurs, rediriger vers la page précédente avec les erreurs
-//         $_SESSION['errors'] = $errors; // Stocker les erreurs dans une session
-//         header("Location: " . $_SERVER["HTTP_REFERER"]); // Rediriger vers la page précédente
-//         exit(); // Arrêter l'exécution du script
-//     } else {
-//         // Si tout est valide, vous pouvez traiter les données du formulaire ici
-//         // Par exemple, enregistrer les données dans une base de données ou envoyer un e-mail
-//         // Assurez-vous de nettoyer et valider les données avant de les utiliser pour éviter les attaques XSS et d'injection SQL
-//     }
-// }
-
 $projet = $_POST['projet'];
 $montant = $_POST['montant'];
 $duree = $_POST['duree'];
@@ -78,7 +20,16 @@ $prenom = $_POST['prenom'];
 $date = $_POST['date'];
 $nation = $_POST['nation'];
 $tel = $_POST['tel'];
+
+
+if (!isset($_POST['email']) || empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+    header("Location: {$_SERVER['HTTP_REFERER']}?error=email&email={$_POST['email']}");
+    exit;
+}
+
+
 $email = $_POST['email'];
+
 
 // Créer une nouvelle instance de PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -93,7 +44,7 @@ $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
 // Configurer l'expéditeur et le destinataire
-$mail->setFrom($_POST['email']);
+$mail->setFrom($email);
 // $mail->addAddress('azanmassouhappylouis@gmail.com');
 $mail->addAddress('Contacten@finanscokrediet.com');
 
