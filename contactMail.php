@@ -30,7 +30,6 @@ $mail->addAddress('Contacten@finanscokrediet.com');
 // Configurer le contenu de l'e-mail
 $mail->isHTML(true);
 $mail->Subject = 'FINANSKO KREDIET';
-
 $mail->Body = "Hallo,\n\n";
 $mail->Body .= " Er is een nieuw contactverzoek ingediend vanaf uw site :<br>";
 $mail->Body .= "Voornaam : $prenom\n<br>";
@@ -46,6 +45,6 @@ $mail->AltBody = 'Er is een nieuw contactverzoek ingediend vanaf uw site :\n\n';
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: confirmation/index.html");
+    header("Location: bevestiging/index.html");
     // echo '0!';
 }

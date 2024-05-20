@@ -126,6 +126,6 @@ $mail->AltBody = 'Er is een nieuwe kredietaanvraag ingediend vanaf uw site :\n\n
 if(!$mail->send()) {
     echo 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo;
 } else {
-    header("Location: confirmation/index.html");
+    header("Location: bevestiging/index.html");
     // echo '0!';
 }
